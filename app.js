@@ -7,7 +7,7 @@ var server = require('http').createServer(app),
   fs = require('fs'),
   path = require('path'),
   ejs = require('ejs-locals'),
-  childprocs = require('./lib/childprocs');
+  childprocs = require('./public_noide/lib/childprocs');
 // noide config
 var noideConfig = {};
 if (fs.existsSync('./noide.json')) {
@@ -69,7 +69,7 @@ app.get("/", function(req, res) {
         res.redirect('public');
 });*/
 // routing
-require('./lib/routing').configure();
+require('./public_noide/lib/routing').configure();
 // initialize server / start listening
 server.listen(port, function() {
   console.log('Listening on ' + port);
