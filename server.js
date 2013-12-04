@@ -14,7 +14,7 @@ if (fs.existsSync('./noide.json')) {
   noideConfig = require('./noide.json');
 }
 // set up default prj dir - used in the absence of a 'path' query string
-if (!noideConfig.projectsDir) noideConfig.projectsDir = path.join(__dirname, 'noide/projects');
+if (!noideConfig.projectsDir) noideConfig.projectsDir = path.join(__dirname, 'client/examples');
 if (!noideConfig.framesUrl1) noideConfig.framesUrl1 = "http://localhost:3000";
 if (!noideConfig.framesUrl2) noideConfig.framesUrl2 = "http://localhost:8080/debug?port=5858";
 
@@ -50,9 +50,9 @@ app.configure(function() {
       callback(null, noideConfig.users[user] == pass);
     }));
   }
-  app.use(app.router);
+  //app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public_noide')));
-  app.use("/tutorial",express.static(path.join(__dirname, 'public')));  
+  app.use("/tutorial",express.static(path.join(__dirname, 'client')));  
 });
 app.configure('development', function() {
   app.use(express.logger('dev'));
